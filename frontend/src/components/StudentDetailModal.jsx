@@ -24,7 +24,7 @@ const StudentDetailModal = ({ isOpen, onClose, student }) => {
           <div className="flex items-center gap-4 border-b border-hairline pb-6">
              <div className="w-20 h-20 rounded-full bg-surface-soft overflow-hidden flex-shrink-0 border border-hairline">
                {student.photo_url ? (
-                 <img src={`http://localhost:5000${student.photo_url}`} alt={student.name} className="w-full h-full object-cover" />
+                 <img src={`${import.meta.env.VITE_API_URL || 'http://localhost:5000'}${student.photo_url}`} alt={student.name} className="w-full h-full object-cover" />
                ) : (
                  <div className="w-full h-full flex items-center justify-center text-mute text-xs">No img</div>
                )}

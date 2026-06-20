@@ -36,7 +36,7 @@ const StudentForm = () => {
 
   useEffect(() => {
     if (isEdit) {
-      axios.get(`http://localhost:5000/api/students/${id}`)
+      axios.get(`${import.meta.env.VITE_API_URL || 'http://localhost:5000'}/api/students/${id}`)
         .then(res => {
           const s = res.data;
           setValue('name', s.name);
@@ -50,7 +50,7 @@ const StudentForm = () => {
           setValue('gender', s.gender);
           setValue('address', s.address);
           if (s.photo_url) {
-            setPhotoPreview(`http://localhost:5000${s.photo_url}`);
+            setPhotoPreview(`${import.meta.env.VITE_API_URL || 'http://localhost:5000'}${s.photo_url}`);
           }
           setLoading(false);
         })
@@ -79,11 +79,11 @@ const StudentForm = () => {
       }
 
       if (isEdit) {
-        await axios.put(`http://localhost:5000/api/students/${id}`, formData, {
+        await axios.put(`${import.meta.env.VITE_API_URL || 'http://localhost:5000'}/api/students/${id}`, formData, {
           headers: { 'Content-Type': 'multipart/form-data' }
         });
       } else {
-        await axios.post('http://localhost:5000/api/students', formData, {
+        await axios.post(`${import.meta.env.VITE_API_URL || 'http://localhost:5000'}/api/students`, formData, {
           headers: { 'Content-Type': 'multipart/form-data' }
         });
       }

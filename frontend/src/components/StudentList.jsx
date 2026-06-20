@@ -21,7 +21,7 @@ const StudentList = () => {
   const fetchStudents = async () => {
     setLoading(true);
     try {
-      const res = await axios.get(`http://localhost:5000/api/students?page=${page}&limit=10&search=${search}&filterCourse=${filterCourse}&filterYear=${filterYear}`);
+      const res = await axios.get(`${import.meta.env.VITE_API_URL || 'http://localhost:5000'}/api/students?page=${page}&limit=10&search=${search}&filterCourse=${filterCourse}&filterYear=${filterYear}`);
       setStudents(res.data.students);
       setTotalPages(res.data.totalPages);
     } catch (err) {
@@ -45,7 +45,7 @@ const StudentList = () => {
   const confirmDelete = async () => {
     if (!deleteId) return;
     try {
-      await axios.delete(`http://localhost:5000/api/students/${deleteId}`);
+      await axios.delete(`${import.meta.env.VITE_API_URL || 'http://localhost:5000'}/api/students/${deleteId}`);
       setDeleteId(null);
       fetchStudents();
     } catch (err) {
@@ -171,7 +171,7 @@ const StudentList = () => {
               >
                 <div className="w-12 h-12 rounded-full bg-surface-soft overflow-hidden flex-shrink-0 border border-hairline">
                   {student.photo_url ? (
-                    <img src={`http://localhost:5000${student.photo_url}`} alt={student.name} className="w-full h-full object-cover" />
+                    <img src={`${import.meta.env.VITE_API_URL || 'http://localhost:5000'}${student.photo_url}`} alt={student.name} className="w-full h-full object-cover" />
                   ) : (
                     <div className="w-full h-full flex items-center justify-center text-mute text-[10px]">No img</div>
                   )}
@@ -207,7 +207,7 @@ const StudentList = () => {
                           <div className="flex items-center gap-3 cursor-pointer" onClick={() => setSelectedStudent(student)}>
                             <div className="w-8 h-8 rounded-full bg-surface-soft overflow-hidden flex-shrink-0 border border-hairline">
                               {student.photo_url ? (
-                                <img src={`http://localhost:5000${student.photo_url}`} alt={student.name} className="w-full h-full object-cover" />
+                                <img src={`${import.meta.env.VITE_API_URL || 'http://localhost:5000'}${student.photo_url}`} alt={student.name} className="w-full h-full object-cover" />
                               ) : (
                                 <div className="w-full h-full flex items-center justify-center text-mute text-[8px]">No img</div>
                               )}
@@ -248,7 +248,7 @@ const StudentList = () => {
                     {/* Photo */}
                     <div className="w-16 h-16 rounded-full bg-surface-soft overflow-hidden flex-shrink-0 border border-hairline cursor-pointer" onClick={() => setSelectedStudent(student)}>
                       {student.photo_url ? (
-                        <img src={`http://localhost:5000${student.photo_url}`} alt={student.name} className="w-full h-full object-cover" />
+                        <img src={`${import.meta.env.VITE_API_URL || 'http://localhost:5000'}${student.photo_url}`} alt={student.name} className="w-full h-full object-cover" />
                       ) : (
                         <div className="w-full h-full flex items-center justify-center text-mute text-xs">No img</div>
                       )}
