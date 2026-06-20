@@ -1,0 +1,55 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-canvas text-body font-sans m-0 p-0 antialiased;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply text-ink font-medium tracking-tight;
+    /* Optional: We can use Inter for headings since SF Pro Rounded isn't easily available everywhere */
+  }
+}
+
+@layer utilities {
+  /* Typography Scale from Ollama Spec (Responsive) */
+  .text-display-xl { @apply text-3xl sm:text-4xl leading-[1.11] font-medium; }
+  .text-display-lg { @apply text-2xl sm:text-3xl leading-[1.2] font-medium; }
+  .text-heading-lg { @apply text-xl sm:text-2xl leading-[1.33] font-semibold; }
+  .text-heading-md { @apply text-lg sm:text-xl leading-[1.4] font-medium; }
+  .text-heading-sm { @apply text-base sm:text-lg leading-[1.56] font-medium; }
+  .text-body-md { @apply text-sm sm:text-base leading-[1.5] font-normal; }
+  .text-body-strong { @apply text-sm sm:text-base leading-[1.5] font-medium; }
+  .text-body-sm { @apply text-xs sm:text-sm leading-[1.43] font-normal; }
+  .text-body-sm-strong { @apply text-xs sm:text-sm leading-[1.43] font-medium; }
+  .text-caption-sm { @apply text-xs leading-[1.33] font-normal; }
+  .text-code-md { @apply text-base leading-[1.5] font-normal font-mono; }
+  .text-code-sm { @apply text-sm leading-[1.43] font-normal font-mono; }
+  .text-button-md { @apply text-xs sm:text-sm leading-none font-medium; }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-primary text-white text-button-md py-1.5 px-4 h-8 sm:py-2 sm:px-5 sm:h-9 rounded-full inline-flex items-center justify-center transition-colors hover:bg-ink-deep;
+  }
+  
+  .btn-secondary {
+    @apply bg-canvas text-ink text-button-md py-1.5 px-4 h-8 sm:py-2 sm:px-5 sm:h-9 rounded-full inline-flex items-center justify-center border border-hairline-strong transition-colors hover:bg-surface-soft;
+  }
+
+  .btn-danger {
+    @apply bg-red-500 text-white text-button-md py-1.5 px-4 h-8 sm:py-2 sm:px-5 sm:h-9 rounded-full inline-flex items-center justify-center transition-colors hover:bg-red-600;
+  }
+
+  .input-pill {
+    @apply bg-canvas text-body-sm sm:text-body-md py-1.5 sm:py-2 px-3 sm:px-4 h-9 sm:h-10 rounded-full border border-hairline focus:outline-none focus:border-ink focus:ring-4 focus:ring-focus-ring/20 transition-all w-full;
+  }
+
+  .card-flat {
+    @apply bg-canvas border-0 sm:border sm:border-hairline py-4 sm:p-8 sm:rounded-lg;
+  }
+}
