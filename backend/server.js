@@ -4,6 +4,13 @@ const dotenv = require('dotenv');
 const studentRoutes = require('./routes/students');
 const analyticsRoutes = require('./routes/analytics');
 const path = require('path');
+const fs = require('fs');
+
+// Ensure uploads directory exists
+const uploadsDir = path.join(__dirname, 'uploads');
+if (!fs.existsSync(uploadsDir)) {
+  fs.mkdirSync(uploadsDir);
+}
 
 dotenv.config();
 
